@@ -37,24 +37,64 @@ managerInfo = () => {
         }
     ]).then(managerAnswers => {
         manager = new Manager(managerAnswers.name, managerAnswers.idNum, managerAnswers.email, managerAnswers.officeNum);
-        lesserEmployeeData();
+        employeeInfo();
     });
 }
 
-    // employeeInfo = () => {
-    //     inquirer.prompt([
-    //         {
-    //             type: 'list',
-    //             name: 'role',
-    //             message: 'Choose a license.',
-    //             choices: [
-    //                 'MIT LICENSE',
-    //                 'BSD LICENSE',
-    //                 'Apache LICENSE',
-    //                 'GNU GPL v3 LICENSE',
-    //             ],
-    //         },
+employeeInfo = () => {
+    inquirer.prompt([
+        {
+            type: 'list',
+            name: 'role',
+            message: 'Choose an employee role to add.',
+            choices: [
+                'Engineer',
+                'Intern'
+            ]
+        },
+        {
+            type: 'input',
+            name: 'employeeName',
+            message: 'Employee Name?'
+        },
+        {
+            type: 'input',
+            name: 'employeeIdnum',
+            message: 'Employee ID number?'
+        },
+        {
+            type: 'input',
+            name: 'employeeEmail',
+            message: 'Employee email?'
+        },
+        {
+            type: 'input',
+            name: 'engineerGithub',
+            message: 'Engineer Github?'
+        },
+        {
+            type: 'input',
+            name: 'internSchool',
+            message: 'Intern School?'
+        },
+        {
+            type: 'confirm',
+            name: 'newEmployee',
+            message: 'Add a new employee?'
+        }
 
+    ]).then(empAnswers => {
+        if (empAnswers.role == 'Engineer') {
+            engineer = new Engineer(empAnswers.employeeName, empAnswers.employeeIdnum, empAnswers.employeeEmail, empAnswers.engineerGithub);
+        } else if (empAnswers.role == 'Intern') {
+            intern = new Intern(empAnswers.employeeName, empAnswers.employeeIdnum, empAnswers.employeeEmail, empAnswers.internSchool);
+        }
+        if (newEmployee == true) {
+            employeeInfo();
+        }
+
+    });
+}
 
 
 
