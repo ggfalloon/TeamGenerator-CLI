@@ -10,25 +10,50 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
-inquirer.prompt() {
 
-
-    const questionsManager = {
-
-
-    }
-
-    const questionsEngineer = {
-
-    }
-
-    const questionsIntern = {
-
-    }
+managerInfo = () => {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: 'Manager name?'
+        },
+        {
+            type: 'input',
+            name: 'idNum',
+            message: 'Manager ID number?'
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'Manager email?'
+        },
+        {
+            type: 'input',
+            name: 'officeNum',
+            message: 'Manager office number?'
+        }
+    ]).then(managerAnswers => {
+        manager = new Manager(managerAnswers.name, managerAnswers.idNum, managerAnswers.email, managerAnswers.officeNum);
+        lesserEmployeeData();
+    });
 }
+
+    // employeeInfo = () => {
+    //     inquirer.prompt([
+    //         {
+    //             type: 'list',
+    //             name: 'role',
+    //             message: 'Choose a license.',
+    //             choices: [
+    //                 'MIT LICENSE',
+    //                 'BSD LICENSE',
+    //                 'Apache LICENSE',
+    //                 'GNU GPL v3 LICENSE',
+    //             ],
+    //         },
 
 
 
@@ -51,4 +76,4 @@ inquirer.prompt() {
 // and Intern classes should all extend from a class named Employee; see the directions
 // for further information. Be sure to test out each class and verify it generates an
 // object with the correct structure and methods. This structure will be crucial in order
-// for the provided `render` function to work! ```
+// for the provided `render` function to work! 
