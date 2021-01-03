@@ -24,7 +24,7 @@ This application uses the Jest JavaScript testing framework. Check out jestjs.io
 
 ## Questions
 
-&copy Gabriele Falloon, github.com/ggfalloon, ggfalloon@mgmail.com
+&copy; Gabriele Falloon, github.com/ggfalloon, ggfalloon@mgmail.com
 
 ## License
 
