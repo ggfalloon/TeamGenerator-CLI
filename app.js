@@ -91,26 +91,31 @@ employeeInfo = () => {
 
     ]).then(empAnswers => {
         if (empAnswers.role == 'Engineer') {
-            engineer = new Engineer(empAnswers.employeeName, empAnswers.employeeIdnum, empAnswers.employeeEmail, empAnswers.engineerGithub);
+            let engineer = new Engineer(empAnswers.employeeName, empAnswers.employeeIdnum, empAnswers.employeeEmail, empAnswers.engineerGithub);
+            teamMembers.push(engineer);
         } else if (empAnswers.role == 'Intern') {
-            intern = new Intern(empAnswers.employeeName, empAnswers.employeeIdnum, empAnswers.employeeEmail, empAnswers.internSchool);
+            let intern = new Intern(empAnswers.employeeName, empAnswers.employeeIdnum, empAnswers.employeeEmail, empAnswers.internSchool);
+            teamMembers.push(intern);
         }
+
+        // After you have your html, you're now ready to create an HTML file using the HTML
+        // returned from the `render` function. Now write it to a file named `team.html` in the
+        // `output` folder. You can use the variable `outputPath` above target this location.
+        // Hint: you may need to check if the `output` folder exists and create it if it
+        // does not.
+
         if (empAnswers.newEmployee === true) {
             employeeInfo();
         } else {
-
+            fs.writeFileSync(OUTPUT_DIR, outputPath, "utf-8")
         }
 
     });
 }
 
-
-
-// After you have your html, you're now ready to create an HTML file using the HTML
-// returned from the `render` function. Now write it to a file named `team.html` in the
-// `output` folder. You can use the variable `outputPath` above target this location.
-// Hint: you may need to check if the `output` folder exists and create it if it
-// does not.
+render = () => {
+    fs.writeFileSync()
+}
 
 // HINT: each employee type (manager, engineer, or intern) has slightly different
 // information; write your code to ask different questions via inquirer depending on
