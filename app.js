@@ -14,6 +14,7 @@ const render = require("./lib/htmlRenderer");
 // and to create objects for each team member (using the correct classes as blueprints!)
 
 const teamMembers = [];
+let manager;
 
 managerInfo = () => {
     inquirer.prompt([
@@ -39,6 +40,7 @@ managerInfo = () => {
         }
     ]).then(managerAnswers => {
         manager = new Manager(managerAnswers.name, managerAnswers.idNum, managerAnswers.email, managerAnswers.officeNum);
+        teamMembers.push(manager);
         employeeInfo();
     });
 }
@@ -107,15 +109,17 @@ employeeInfo = () => {
         if (empAnswers.newEmployee === true) {
             employeeInfo();
         } else {
-            fs.writeFileSync(OUTPUT_DIR, outputPath, "utf-8")
+            const htmlTemplate = render(teamMembers)
+            fs.writeFileSync(outputPath, htmlTemplate)
         }
 
     });
 }
+managerInfo();
 
-render = () => {
-    fs.writeFileSync()
-}
+// render = (teamMembers) => {
+//     fs.writeFileSync()
+// }
 
 // HINT: each employee type (manager, engineer, or intern) has slightly different
 // information; write your code to ask different questions via inquirer depending on
