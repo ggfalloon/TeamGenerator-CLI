@@ -21,7 +21,7 @@ Clone the repository at https://github.com/ggfalloon/TeamGenerator-CLI. (Require
 
 First type "npm i" in your command line to install node modules for the package.json. To invoke the application, type "node app.js". Next you'll be prompted by inquirer to answer each of the questions to build your team. When you are done adding employees to your team, an html page will be generated for you and nicely formatted with each of the team member's profile information.
 
-![TeamProfileGenerator](https://user-images.githubusercontent.com/71281652/103577386-4f761180-4e9a-11eb-9fee-665cc16ce936.png)
+![TeamGenerator](https://user-images.githubusercontent.com/71281652/103591353-873e8280-4eb5-11eb-8b71-b231cfb0ea9c.png)
 
 ## Tests
 
